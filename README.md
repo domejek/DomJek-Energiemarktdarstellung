@@ -23,11 +23,12 @@ Folgende Python-Pakete werden benötigt:
 - scipy
 - matplotlib
 - seaborn
+- requests
 
 Installation mit pip:
 
 ```bash
-pip install numpy pandas scikit-learn xgboost scipy matplotlib seaborn
+pip install numpy pandas scikit-learn xgboost scipy matplotlib seaborn requests
 ```
 
 ## Nutzung
