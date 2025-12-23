@@ -1,0 +1,46 @@
+# DomJek Energiemarktdarstellung v2.0
+# Python-Abhängigkeiten
+
+# Basis-Pakete
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Web Scraping
+selenium>=4.15.0
+webdriver-manager>=4.0.0
+
+# Datenverarbeitung
+python-dateutil>=2.8.2
+pytz>=2023.3
+
+# Visualisierung (optional)
+matplotlib>=3.7.0
+plotly>=5.18.0
+seaborn>=0.13.0
+
+# Web Dashboard (optional)
+streamlit>=1.29.0
+dash>=2.14.0
+
+# API Development (optional)
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# Datenbank (optional)
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code Quality (optional)
+black>=23.11.0
+flake8>=6.1.0
+mypy>=1.7.0
+
+# Utilities
+python-dotenv>=1.0.0
+tqdm>=4.66.0
