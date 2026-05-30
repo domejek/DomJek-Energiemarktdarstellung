@@ -1,0 +1,81 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.source-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.source-badge.source-demo {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.source-badge.source-api {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.fallback-banner {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #f57f17;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.charts-section {
+  margin: 1.5rem 0;
+}
+
+.analysis-section {
+  margin: 1.5rem 0;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.dashboard-footer {
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+  padding: 1.5rem 0 0.5rem;
+  border-top: 1px solid #eee;
+  margin-top: 1.5rem;
+}

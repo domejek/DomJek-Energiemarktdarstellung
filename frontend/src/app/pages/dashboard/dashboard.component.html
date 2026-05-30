@@ -1,0 +1,85 @@
+<div class="dashboard-layout">
+  <app-sidebar />
+
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <h1>⚡ Regelenergie Dashboard</h1>
+      <span class="source-badge" [class.source-api]="filter.dataSource === 'api'" [class.source-demo]="filter.dataSource !== 'api'">
+        {{ sourceLabel || 'Demo-Daten' }}
+      </span>
+    </header>
+
+    @if (fallbackDate) {
+      <div class="fallback-banner">
+        ⚠️ Daten vom {{ fallbackDate }} — Für heute liegen noch keine Ausschreibungsdaten vor.
+      </div>
+    }
+
+    @if (loading) {
+      <div class="loading-indicator">Lade Daten...</div>
+    }
+
+    <app-kpi-cards [statistics]="statistics" [showPrl]="filter.showPrl" [showAffr]="filter.showAffr" />
+
+    <section class="charts-section">
+      @if (filter.showPrl) {
+        <app-time-series-chart
+          [data]="prlData"
+          chartType="prl"
+          [showGesamt]="filter.showGesamt"
+          [tsos]="filter.tsos"
+        />
+      }
+      @if (filter.showAffr) {
+        <app-time-series-chart
+          [data]="affrData"
+          chartType="affr"
+          [showGesamt]="filter.showGesamt"
+          [tsos]="filter.tsos"
+        />
+      }
+    </section>
+
+    <section class="analysis-section">
+      <mat-tab-group>
+        <mat-tab label="Verteilungen">
+          <div class="analysis-grid">
+            @if (filter.showPrl) {
+              <app-distribution-chart [data]="prlData" title="PRL Verteilung" />
+            }
+            @if (filter.showAffr) {
+              <app-distribution-chart [data]="affrData" title="aFRR Verteilung" />
+            }
+          </div>
+        </mat-tab>
+        <mat-tab label="Tagesprofile">
+          @if (filter.showPrl) {
+            <app-daily-profile-chart [data]="prlData" />
+          }
+        </mat-tab>
+        <mat-tab label="Heatmap">
+          @if (filter.showAffr) {
+            <app-heatmap-chart [data]="affrData" />
+          }
+        </mat-tab>
+      </mat-tab-group>
+    </section>
+
+    @if (filter.dataSource === 'csv') {
+      <app-csv-upload />
+    }
+
+    <app-data-export
+      [prlData]="prlData"
+      [affrData]="affrData"
+      [showPrl]="filter.showPrl"
+      [showAffr]="filter.showAffr"
+      [startDate]="filter.startDate"
+      [endDate]="filter.endDate"
+    />
+
+    <footer class="dashboard-footer">
+      <p>DomJek Energiemarktdarstellung v3.0 | Datenquelle: {{ sourceLabel || 'Demo-Daten' }}</p>
+    </footer>
+  </main>
+</div>

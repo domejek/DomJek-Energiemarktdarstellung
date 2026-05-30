@@ -1,0 +1,63 @@
+<aside class="sidebar">
+  <h2>⚙️ Einstellungen</h2>
+
+  <section class="sidebar-section">
+    <h3>Datenquelle</h3>
+    <mat-radio-group [value]="filter.dataSource" (change)="setDataSource($event.value)">
+      <mat-radio-button value="demo">Demo-Daten</mat-radio-button>
+      <mat-radio-button value="csv">CSV importieren</mat-radio-button>
+      <mat-radio-button value="api">Live (regelleistung.net)</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <mat-divider />
+
+  <section class="sidebar-section">
+    <h3>📅 Zeitraum</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Von</mat-label>
+      <input matInput [matDatepicker]="startPicker" [value]="filter.startDate" (dateChange)="onStartDateChange($event.value)" />
+      <mat-datepicker-toggle matSuffix [for]="startPicker" />
+      <mat-datepicker #startPicker />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [matDatepicker]="endPicker" [value]="filter.endDate" (dateChange)="onEndDateChange($event.value)" />
+      <mat-datepicker-toggle matSuffix [for]="endPicker" />
+      <mat-datepicker #endPicker />
+    </mat-form-field>
+  </section>
+
+  <mat-divider />
+
+  <section class="sidebar-section">
+    <h3>📊 Anzeigen</h3>
+    <mat-checkbox [checked]="filter.showPrl" (change)="togglePrl($event.checked)">
+      k*Delta f (PRL)
+    </mat-checkbox>
+    <mat-checkbox [checked]="filter.showAffr" (change)="toggleAffr($event.checked)">
+      Aktivierte aFRR (SRL)
+    </mat-checkbox>
+  </section>
+
+  <mat-divider />
+
+  <section class="sidebar-section">
+    <h3>🔌 Übertragungsnetzbetreiber</h3>
+    <mat-checkbox [checked]="filter.showGesamt" (change)="toggleGesamt($event.checked)">
+      Deutschland (Gesamt)
+    </mat-checkbox>
+    <mat-checkbox [checked]="filter.tsos._50hertz" (change)="toggleTso('_50hertz', $event.checked)">
+      50Hertz
+    </mat-checkbox>
+    <mat-checkbox [checked]="filter.tsos.amprion" (change)="toggleTso('amprion', $event.checked)">
+      Amprion
+    </mat-checkbox>
+    <mat-checkbox [checked]="filter.tsos.tennet" (change)="toggleTso('tennet', $event.checked)">
+      TenneT
+    </mat-checkbox>
+    <mat-checkbox [checked]="filter.tsos.transnetbw" (change)="toggleTso('transnetbw', $event.checked)">
+      TransnetBW
+    </mat-checkbox>
+  </section>
+</aside>

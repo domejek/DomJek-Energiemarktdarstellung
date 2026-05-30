@@ -1,0 +1,11 @@
+<div class="kpi-grid">
+  @for (card of cards; track card.label) {
+    <mat-card class="kpi-card">
+      <mat-card-content>
+        <div class="kpi-label">{{ card.label }}</div>
+        <div class="kpi-value">{{ card.value }}</div>
+        <div class="kpi-delta">{{ card.delta }}</div>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-content>
+    <h3>📁 CSV-Dateien hochladen</h3>
+
+    <div class="upload-grid">
+      <div class="upload-zone">
+        <h4>PRL-Daten</h4>
+        <input type="file" accept=".csv" (change)="onFileSelected($event, 'prl')" />
+      </div>
+      <div class="upload-zone">
+        <h4>aFRR-Daten</h4>
+        <input type="file" accept=".csv" (change)="onFileSelected($event, 'affr')" />
+      </div>
+    </div>
+
+    @if (uploading) {
+      <p>Lade hoch...</p>
+    }
+
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+
+    @if (result) {
+      <p>✅ {{ result.rows }} Datensätze geladen</p>
+      @if (result.preview.length) {
+        <table mat-table [dataSource]="result.preview" class="preview-table">
+          @for (col of result.columns; track col) {
+            <ng-container [matColumnDef]="col">
+              <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+              <td mat-cell *matCellDef="let row">{{ row[col] }}</td>
+            </ng-container>
+          }
+          <tr mat-header-row *matHeaderRowDef="result.columns"></tr>
+          <tr mat-row *matRowDef="let row; columns: result.columns"></tr>
+        </table>
+      }
+    }
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,15 @@
+<section class="export-section">
+  <h3>💾 Daten exportieren</h3>
+  <div class="export-buttons">
+    @if (showPrl && prlData.length) {
+      <button mat-raised-button color="primary" (click)="downloadCsv(prlData, 'prl_data_' + startDate + '_' + endDate + '.csv')">
+        📥 PRL als CSV
+      </button>
+    }
+    @if (showAffr && affrData.length) {
+      <button mat-raised-button color="accent" (click)="downloadCsv(affrData, 'affr_data_' + startDate + '_' + endDate + '.csv')">
+        📥 aFRR als CSV
+      </button>
+    }
+  </div>
+</section>
